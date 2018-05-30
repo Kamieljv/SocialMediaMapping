@@ -18,7 +18,7 @@ import time
 
 # set query parameters
 TRACK = '' #Comma-separated list of terms
-LOCATIONS = '' #OLD:'35.661621,-2.054003,38.825684,1.021674' #bounding box
+LOCATIONS = '' #bounding box (xmin, ymin, xmax, ymax) with x=>longitude, y=>latitude
 
 # set path to output files
 OUTPUT_PATH = ''
