@@ -1,3 +1,11 @@
+"""
+Modified on Tue 5 Jun 2018
+@author: Kamieljv (GitHub)
+SpearmanRank_local.py:
+    compute the Spearman Rank Correlation of local samples on a grid
+    write results to a csv file
+"""
+
 from scipy import stats as scst
 import csv
 import numpy as np

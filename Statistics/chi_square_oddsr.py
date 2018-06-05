@@ -1,3 +1,10 @@
+"""
+Modified on Tue 5 Jun 2018
+@author: Kamieljv (GitHub)
+chi_square_oddsr.py:
+    compute the chi-square values and odds ratio of a set of values on a spatial grid.
+"""
+
 from scipy import stats as scst
 import csv
 import numpy as np

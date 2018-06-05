@@ -1,3 +1,10 @@
+"""
+Modified on Tue 5 Jun 2018
+@author: Kamieljv (GitHub)
+histogram.py:
+    plot histograms of values on a spatial grid.
+"""
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt

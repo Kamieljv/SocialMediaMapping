@@ -1,3 +1,10 @@
+"""
+Modified on Tue 5 Jun 2018
+@author: Kamieljv (GitHub)
+SpearmanRank_global.py:
+    compute the Spearman Rank Correlation globally, for values on a spatial grid
+"""
+
 from scipy import stats as scst
 import csv
 import numpy as np

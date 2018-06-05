@@ -1,3 +1,13 @@
+"""
+Modified on Tue 5 Jun 2018
+@author: Kamieljv (GitHub)
+linear_regression.py:
+    linear regression analysis of data on a spatial grid
+    fits a line through the data
+    makes estimate based on fit
+    write results to a csv
+"""
+
 from scipy import stats as scst
 from scipy import optimize as opt
 import csv
