@@ -28,8 +28,8 @@ PATH = ''
 FILE_OUT_TRUNK = ''
 
 # api_key
-API_KEY = '808d84249c787469c00bbf620e9e55f3'
-API_SECRET = '61af9243816414e1'
+API_KEY = ''
+API_SECRET = ''
 
 # define search query keywords, dates and location;
 # radius unit is km, default is 5
