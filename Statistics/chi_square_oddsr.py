@@ -1,5 +1,5 @@
 """
-Modified on Tue 5 Jun 2018
+Modified on Tue 8 Jun 2018
 @author: Kamieljv (GitHub)
 chi_square_oddsr.py:
     compute the chi-square values and odds ratio of a set of values on a spatial grid.
@@ -9,6 +9,7 @@ from scipy import stats as scst
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 #Reading the data file
 twt_cnt = np.array([])
@@ -75,19 +76,41 @@ def oddsratio(binary1, binary2):
     print(cont)
     oddsr = (a/b)/(c/d)
     print('oddsr: '+str(round(oddsr, 2))+'\n')
-    return oddsr
 
-#SAT CLASS VS OSM FEATURE
-print('SAT CLASS VS OSM FEATURE:')
-chi2_sat_osm, p_sat_osm = chi2(sat_binary, osm_binary)
-oddsr_sat_osm = oddsratio(sat_binary, osm_binary)
+    conf_l = round(math.exp(math.log(oddsr) - 1.96*math.sqrt(1/a+1/b+1/c+1/d)),1)
+    conf_u = round(math.exp(math.log(oddsr) + 1.96*math.sqrt(1/a+1/b+1/c+1/d)),1)
 
-#SAT CLASS VS TWEET
-print('SAT CLASS VS TWEET:')
+    conf95 = [conf_l, conf_u]
+    print('95% Confidence Interval: ',conf95)
+
+    return oddsr, conf95
+
+print('---------------------------------\n',
+      'SAT CLASS VS ROADS:')
+chi2_sat_rd, p_sat_rd = chi2(sat_binary, rd_binary)
+oddsr_sat_rd = oddsratio(sat_binary, rd_binary)
+
+print('---------------------------------\n',
+      'SAT CLASS VS BUILDINGS:')
+chi2_sat_bd, p_sat_bd = chi2(sat_binary, bd_binary)
+oddsr_sat_bd = oddsratio(sat_binary, bd_binary)
+
+print('---------------------------------\n',
+      'SAT CLASS VS TWEET:')
 chi2_sat_twt, p_sat_twt = chi2(sat_binary, twt_binary)
 oddsr_sat_twt = oddsratio(sat_binary, twt_binary)
 
-#TWEET VS OSM FEATURE
-print('TWEET VS OSM FEATURE:')
-chi2_twt_osm, p_twt_osm = chi2(twt_binary, osm_binary)
-oddsr_twt_osm = oddsratio(twt_binary, osm_binary)
+print('---------------------------------\n',
+      'TWEET VS ROADS:')
+chi2_twt_rd, p_twt_rd = chi2(twt_binary, rd_binary)
+oddsr_twt_rd = oddsratio(twt_binary, rd_binary)
+
+print('---------------------------------\n',
+      'TWEET VS BUILDINGS:')
+chi2_twt_bd, p_twt_bd = chi2(twt_binary, bd_binary)
+oddsr_twt_bd = oddsratio(twt_binary, bd_binary)
+
+print('---------------------------------\n',
+      'ROADS VS BUILDINGS:')
+chi2_rd_bd, p_rd_bd = chi2(rd_binary, bd_binary)
+oddsr_rd_bd = oddsratio(rd_binary, bd_binary)
