@@ -1,5 +1,5 @@
 """
-Modified on Tue 8 Jun 2018
+Modified on Mon 18 Jun 2018
 @author: Kamieljv (GitHub)
 chi_square_oddsr.py:
     compute the chi-square values and odds ratio of a set of values on a spatial grid.
@@ -45,10 +45,10 @@ def contingency(binary1, binary2):
     #   binary1: variable on rows
     #   binary2: variable on cols
 
-    a = np.count_nonzero([1 if (binary1[i]==0 and binary2[i]==0) else 0 for i in range(len)])
-    b = np.count_nonzero([1 if (binary1[i]==0 and binary2[i]==1) else 0 for i in range(len)])
-    c = np.count_nonzero([1 if (binary1[i]==1 and binary2[i]==0) else 0 for i in range(len)])
-    d = np.count_nonzero([1 if (binary1[i]==1 and binary2[i]==1) else 0 for i in range(len)])
+    a = np.count_nonzero([1 if (binary1[i]==1 and binary2[i]==1) else 0 for i in range(len)])
+    b = np.count_nonzero([1 if (binary1[i]==1 and binary2[i]==0) else 0 for i in range(len)])
+    c = np.count_nonzero([1 if (binary1[i]==0 and binary2[i]==1) else 0 for i in range(len)])
+    d = np.count_nonzero([1 if (binary1[i]==0 and binary2[i]==0) else 0 for i in range(len)])
 
     return a, b, c, d
 
@@ -64,6 +64,7 @@ def chi2(binary1, binary2):
     chi2 = scst.chi2_contingency(cont)
     print('chi2: '+str(round(chi2[0], 2))+'\n'+'p-value:   ' +str(chi2[1])+'\n')
     return chi2[0], chi2[1] #chi2 value and p-value, respectively
+
 
 def oddsratio(binary1, binary2):
     #Function that computes the odds ratio based on the contingency table
